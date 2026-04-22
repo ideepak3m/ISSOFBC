@@ -1,0 +1,347 @@
+database: IISofBC Analytics Staging
+engine: SQLite
+description: >
+  Unified staging database for IISofBC (Immigrant & Integration Society of BC),
+  consolidating data from four source systems. Dates are ISO strings (YYYY-MM-DD).
+  Use strftime('%Y', col) to extract year in SQLite.
+
+notes:
+  - "For payroll cost by department: join payroll_records → hr_employees (on person_id) → hr_departments"
+  - "For actual salary spend last N months: payroll_records JOIN payroll_runs ON run_id WHERE pay_date >= date('now','-N months')"
+  - "hr_employees.annual_salary is the budgeted salary; use payroll_records.gross_pay for actual pay"
+  - "staff_volunteers is the master people table shared across Newtract, BambooHR and Paywork"
+  - "donations table has no campaign_name or is_recurring column"
+  - "communication_log date column is comm_date (not communication_date)"
+
+sources:
+
+  NEWTRACT:
+    description: CRM and client management
+    tables:
+
+      beneficiaries:
+        description: Clients / beneficiaries served by IISofBC
+        columns:
+          beneficiary_id: {type: INTEGER, pk: true}
+          status:         {type: TEXT, values: [Active, Completed, Inactive]}
+          first_name:     {type: TEXT}
+          last_name:      {type: TEXT}
+          date_of_birth:  {type: DATE}
+          gender:         {type: TEXT, values: [M, F, Other]}
+          immigration_status: {type: TEXT, values: [Refugee, Permanent Resident, Citizen, Work Permit, Study Permit]}
+          arrival_date:   {type: DATE}
+          primary_language: {type: TEXT}
+          english_proficiency_start: {type: TEXT}
+          country_of_origin: {type: TEXT}
+          household_size: {type: INTEGER}
+          income_level_start: {type: DECIMAL}
+          referred_by:    {type: TEXT}
+          created_date:   {type: DATETIME}
+
+      programs:
+        description: Settlement and integration programs offered
+        columns:
+          program_id:       {type: INTEGER, pk: true}
+          program_code:     {type: TEXT}
+          program_name:     {type: TEXT}
+          description:      {type: TEXT}
+          program_type:     {type: TEXT, values: [Group, Individual, Online, Hybrid]}
+          target_audience:  {type: TEXT}
+          duration_weeks:   {type: INTEGER}
+          frequency:        {type: TEXT}
+          max_capacity:     {type: INTEGER}
+          budget_allocated: {type: DECIMAL}
+          is_active:        {type: BOOLEAN}
+
+      staff_volunteers:
+        description: "Master people table — staff, volunteers and contractors (shared with BambooHR and Paywork)"
+        columns:
+          person_id:            {type: INTEGER, pk: true}
+          first_name:           {type: TEXT}
+          last_name:            {type: TEXT}
+          person_type:          {type: TEXT, values: [Staff, Volunteer, Contractor]}
+          employment_status:    {type: TEXT, values: [Active, Inactive]}
+          department:           {type: TEXT}
+          roles:                {type: TEXT}
+          languages_spoken:     {type: TEXT}
+          hire_date:            {type: DATE}
+          salary_hourly_rate:   {type: DECIMAL}
+          volunteer_hours_target: {type: INTEGER}
+
+      program_enrollments:
+        description: Links between beneficiaries and programs
+        columns:
+          enrollment_id:   {type: INTEGER, pk: true}
+          beneficiary_id:  {type: INTEGER, fk: beneficiaries.beneficiary_id}
+          program_id:      {type: INTEGER, fk: programs.program_id}
+          enrollment_date: {type: DATE}
+          status:          {type: TEXT, values: [Active, Completed, Dropped Out, On Hold]}
+          completion_date: {type: DATE}
+          attendance_rate: {type: DECIMAL}
+          notes:           {type: TEXT}
+
+      program_sessions:
+        description: Individual session instances within programs
+        columns:
+          session_id:     {type: INTEGER, pk: true}
+          program_id:     {type: INTEGER, fk: programs.program_id}
+          session_number: {type: INTEGER}
+          start_date:     {type: DATE}
+          end_date:       {type: DATE}
+          instructor_id:  {type: INTEGER, fk: staff_volunteers.person_id}
+          location:       {type: TEXT}
+          session_type:   {type: TEXT, values: [Workshop, Class, Consultation, Group Activity]}
+          max_capacity:   {type: INTEGER}
+          material_topic: {type: TEXT}
+
+      session_attendance:
+        description: Attendance records per session per beneficiary
+        columns:
+          attendance_id:  {type: INTEGER, pk: true}
+          session_id:     {type: INTEGER, fk: program_sessions.session_id}
+          beneficiary_id: {type: INTEGER, fk: beneficiaries.beneficiary_id}
+          attended:       {type: BOOLEAN}
+          arrival_time:   {type: TIME}
+          departure_time: {type: TIME}
+
+      outcomes:
+        description: Measurable outcomes achieved by beneficiaries
+        columns:
+          outcome_id:    {type: INTEGER, pk: true}
+          beneficiary_id: {type: INTEGER, fk: beneficiaries.beneficiary_id}
+          outcome_type:  {type: TEXT}
+          program_id:    {type: INTEGER, fk: programs.program_id}
+          metric_name:   {type: TEXT}
+          metric_value:  {type: TEXT}
+          metric_date:   {type: DATE}
+
+      services_delivered:
+        description: Individual service interactions with beneficiaries
+        columns:
+          service_id:          {type: INTEGER, pk: true}
+          beneficiary_id:      {type: INTEGER, fk: beneficiaries.beneficiary_id}
+          service_type:        {type: TEXT}
+          provider_id:         {type: INTEGER, fk: staff_volunteers.person_id}
+          service_date:        {type: DATE}
+          duration_minutes:    {type: INTEGER}
+          location:            {type: TEXT}
+          outcome_description: {type: TEXT}
+          follow_up_needed:    {type: BOOLEAN}
+
+      job_placements:
+        description: Employment placements achieved by beneficiaries
+        columns:
+          placement_id:       {type: INTEGER, pk: true}
+          beneficiary_id:     {type: INTEGER, fk: beneficiaries.beneficiary_id}
+          job_title:          {type: TEXT}
+          employer_name:      {type: TEXT}
+          placement_date:     {type: DATE}
+          employment_type:    {type: TEXT, values: [Full-time, Part-time, Contract, Self-employed]}
+          salary_range_start: {type: DECIMAL}
+          status:             {type: TEXT, values: [Active, "Completed - Left", "Completed - Terminated"]}
+          end_date:           {type: DATE}
+          industry_sector:    {type: TEXT}
+          match_score:        {type: DECIMAL}
+
+      settlement_milestones:
+        description: Key settlement milestones reached by beneficiaries
+        columns:
+          milestone_id:       {type: INTEGER, pk: true}
+          beneficiary_id:     {type: INTEGER, fk: beneficiaries.beneficiary_id}
+          milestone_type:     {type: TEXT}
+          milestone_date:     {type: DATE}
+          supporting_staff_id: {type: INTEGER, fk: staff_volunteers.person_id}
+
+      communication_log:
+        description: Staff communications with beneficiaries
+        columns:
+          comm_id:              {type: INTEGER, pk: true}
+          beneficiary_id:       {type: INTEGER, fk: beneficiaries.beneficiary_id}
+          staff_id:             {type: INTEGER, fk: staff_volunteers.person_id}
+          communication_type:   {type: TEXT}
+          subject:              {type: TEXT}
+          notes:                {type: TEXT}
+          outcome:              {type: TEXT}
+          next_action_required: {type: BOOLEAN}
+          comm_date:            {type: DATETIME}   # note: NOT communication_date
+
+  BUSINESS_CENTRAL:
+    description: Finance and accounting
+    tables:
+
+      donations:
+        description: Cash and in-kind donations received
+        columns:
+          donation_id:       {type: INTEGER, pk: true}
+          donor_name:        {type: TEXT}
+          donor_type:        {type: TEXT}
+          donation_amount:   {type: DECIMAL}
+          donation_date:     {type: DATE}
+          donation_type:     {type: TEXT, values: [Cash, In-Kind]}
+          item_type:         {type: TEXT}
+          quantity:          {type: INTEGER}
+          purpose:           {type: TEXT}
+          tax_receipt_issued: {type: BOOLEAN}
+          receipt_number:    {type: TEXT}
+
+      government_grants:
+        description: Government grants awarded to IISofBC
+        columns:
+          grant_id:            {type: INTEGER, pk: true}
+          grant_name:          {type: TEXT}
+          grant_number:        {type: TEXT}
+          funding_source:      {type: TEXT}
+          program_id:          {type: INTEGER, fk: programs.program_id}
+          grant_amount:        {type: DECIMAL}
+          grant_year:          {type: INTEGER}
+          start_date:          {type: DATE}
+          end_date:            {type: DATE}
+          amount_claimed_ytd:  {type: DECIMAL}
+          amount_approved_ytd: {type: DECIMAL}
+          status:              {type: TEXT, values: [Active, Closed, Pending]}
+
+      expenses:
+        description: Operational expenses submitted for approval
+        columns:
+          expense_id:       {type: INTEGER, pk: true}
+          expense_date:     {type: DATE}
+          category:         {type: TEXT}
+          description:      {type: TEXT}
+          amount:           {type: DECIMAL}
+          vendor_name:      {type: TEXT}
+          approval_status:  {type: TEXT, values: [Submitted, Approved, Rejected, Reimbursed]}
+          approved_by:      {type: INTEGER}
+          program_id:       {type: INTEGER, fk: programs.program_id}
+          grant_id:         {type: INTEGER, fk: government_grants.grant_id}
+          receipt_attached: {type: BOOLEAN}
+
+      gl_accounts:
+        description: General ledger chart of accounts
+        columns:
+          account_id:       {type: INTEGER, pk: true}
+          account_code:     {type: TEXT}
+          account_name:     {type: TEXT}
+          account_type:     {type: TEXT, values: [Asset, Liability, Equity, Revenue, Expense]}
+          account_category: {type: TEXT}
+          is_active:        {type: BOOLEAN}
+
+      gl_transactions:
+        description: General ledger journal entries
+        columns:
+          transaction_id:   {type: INTEGER, pk: true}
+          account_id:       {type: INTEGER, fk: gl_accounts.account_id}
+          transaction_date: {type: DATE}
+          fiscal_year:      {type: INTEGER}
+          fiscal_period:    {type: INTEGER}
+          debit_amount:     {type: DECIMAL}   # note: NOT "debit"
+          credit_amount:    {type: DECIMAL}   # note: NOT "credit"
+          description:      {type: TEXT}
+          reference_number: {type: TEXT}
+          source_module:    {type: TEXT}
+
+      budget_lines:
+        description: Annual budget allocations by account and program
+        columns:
+          budget_id:    {type: INTEGER, pk: true}   # note: NOT budget_line_id
+          fiscal_year:  {type: INTEGER}
+          account_id:   {type: INTEGER, fk: gl_accounts.account_id}
+          program_id:   {type: INTEGER, fk: programs.program_id}
+          annual_budget: {type: DECIMAL}
+          q1_budget:    {type: DECIMAL}
+          q2_budget:    {type: DECIMAL}
+          q3_budget:    {type: DECIMAL}
+          q4_budget:    {type: DECIMAL}
+          actual_ytd:   {type: DECIMAL}
+
+  BAMBOOHR:
+    description: Human resources management
+    tables:
+
+      hr_departments:
+        description: Organisational departments
+        columns:
+          dept_id:         {type: INTEGER, pk: true}
+          department_name: {type: TEXT}
+          department_code: {type: TEXT}
+          cost_center:     {type: TEXT}
+
+      hr_employees:
+        description: "Employee records — joins to staff_volunteers via person_id"
+        columns:
+          hr_employee_id:          {type: INTEGER, pk: true}
+          person_id:               {type: INTEGER, fk: staff_volunteers.person_id}
+          employee_number:         {type: TEXT}
+          dept_id:                 {type: INTEGER, fk: hr_departments.dept_id}
+          position_title:          {type: TEXT}   # note: NOT job_title
+          employment_type:         {type: TEXT, values: [Full-time, Part-time, Contract, Casual]}
+          employment_status:       {type: TEXT, values: [Active, On Leave, Terminated]}
+          start_date:              {type: DATE}   # note: NOT hire_date
+          end_date:                {type: DATE}
+          annual_salary:           {type: DECIMAL}
+          hourly_rate:             {type: DECIMAL}
+          manager_hr_employee_id:  {type: INTEGER, fk: hr_employees.hr_employee_id}
+          city:                    {type: TEXT}
+          province:                {type: TEXT}
+          benefits_enrolled:       {type: BOOLEAN}
+
+      hr_leave_requests:
+        description: Employee leave requests
+        columns:
+          leave_id:                  {type: INTEGER, pk: true}
+          hr_employee_id:            {type: INTEGER, fk: hr_employees.hr_employee_id}
+          leave_type:                {type: TEXT}
+          start_date:                {type: DATE}
+          end_date:                  {type: DATE}
+          total_days:                {type: DECIMAL}
+          status:                    {type: TEXT, values: [Pending, Approved, Rejected, Cancelled]}
+          approved_by_hr_employee_id: {type: INTEGER, fk: hr_employees.hr_employee_id}
+          reason:                    {type: TEXT}
+
+      hr_performance_reviews:
+        description: Annual employee performance reviews
+        columns:
+          review_id:               {type: INTEGER, pk: true}
+          hr_employee_id:          {type: INTEGER, fk: hr_employees.hr_employee_id}
+          review_year:             {type: INTEGER}
+          review_period:           {type: TEXT}
+          overall_rating:          {type: INTEGER}
+          reviewer_hr_employee_id: {type: INTEGER, fk: hr_employees.hr_employee_id}
+          review_date:             {type: DATE}
+          goals_met:               {type: TEXT}   # note: NOT goals_met_pct
+          development_notes:       {type: TEXT}
+
+  PAYWORK:
+    description: Payroll processing
+    tables:
+
+      payroll_runs:
+        description: Bi-weekly payroll runs
+        columns:
+          run_id:           {type: INTEGER, pk: true}
+          pay_period_start: {type: DATE}
+          pay_period_end:   {type: DATE}
+          pay_date:         {type: DATE}
+          run_type:         {type: TEXT}
+          status:           {type: TEXT, values: [Pending, Paid, Void]}
+          total_gross:      {type: DECIMAL}
+          total_deductions: {type: DECIMAL}
+          total_net:        {type: DECIMAL}
+          employee_count:   {type: INTEGER}
+
+      payroll_records:
+        description: Individual employee pay stubs within a run
+        columns:
+          record_id:        {type: INTEGER, pk: true}
+          run_id:           {type: INTEGER, fk: payroll_runs.run_id}
+          person_id:        {type: INTEGER, fk: staff_volunteers.person_id}
+          regular_hours:    {type: DECIMAL}   # note: NOT hours_worked
+          overtime_hours:   {type: DECIMAL}   # note: NOT overtime_pay
+          gross_pay:        {type: DECIMAL}
+          federal_tax:      {type: DECIMAL}   # note: NOT tax_deduction
+          provincial_tax:   {type: DECIMAL}
+          cpp_deduction:    {type: DECIMAL}
+          ei_deduction:     {type: DECIMAL}
+          other_deductions: {type: DECIMAL}
+          net_pay:          {type: DECIMAL}
+          ytd_gross:        {type: DECIMAL}
+          ytd_tax:          {type: DECIMAL}
