@@ -54,7 +54,12 @@ export default function ReportModal({ report, onClose }) {
                 <span key={s} className={`badge ${BADGE_CLASS[s] ?? 'badge-newtract'}`}>{s}</span>
               ))}
             </div>
-            <div className="modal-meta">{report.description} &nbsp;·&nbsp; Generated {genDate}</div>
+            <div className="modal-meta">
+              {report.description} &nbsp;·&nbsp; Generated {genDate}
+              {report.filter_applied && (
+                <> &nbsp;·&nbsp; Period: <strong>{report.filter_applied}</strong></>
+              )}
+            </div>
           </div>
           <button className="modal-close" onClick={onClose} aria-label="Close">✕</button>
         </div>

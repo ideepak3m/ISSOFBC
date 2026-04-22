@@ -34,7 +34,14 @@ export default function ReportTile({ report, onClick }) {
 
       <div className="tile-footer">
         {report.description?.slice(0, 80)}{report.description?.length > 80 ? '…' : ''}
-        {genDate && <span style={{ float: 'right' }}>{genDate}</span>}
+        <span style={{ float: 'right', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+          {report.filter_applied && report.filter_applied !== 'All Time' && (
+            <span className="filter-pill active" style={{ fontSize: '0.62rem', padding: '2px 8px' }}>
+              {report.filter_applied}
+            </span>
+          )}
+          {genDate}
+        </span>
       </div>
     </div>
   )

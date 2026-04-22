@@ -15,6 +15,7 @@ class ReportResponse(BaseModel):
     description: str
     sources: list[str]
     generated_at: str
+    filter_applied: str = "All Time"
     summary: dict[str, Any]
     data: list[dict[str, Any]]
     chart: Optional[ChartSpec] = None

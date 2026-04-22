@@ -6,8 +6,14 @@ export async function fetchReportList() {
   return res.json()
 }
 
-export async function fetchReport(path) {
-  const res = await fetch(`${BASE}${path}`)
+export async function fetchReport(path, filter = {}) {
+  const params = new URLSearchParams()
+  if (filter.year)       params.set('year',       filter.year)
+  if (filter.start_date) params.set('start_date', filter.start_date)
+  if (filter.end_date)   params.set('end_date',   filter.end_date)
+  const qs  = params.toString()
+  const url = qs ? `${BASE}${path}?${qs}` : `${BASE}${path}`
+  const res = await fetch(url)
   if (!res.ok) throw new Error(`Failed to fetch report: ${path}`)
   return res.json()
 }
