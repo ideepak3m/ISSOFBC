@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { runAdhocQuery } from '../api'
 import ChartView from './ChartView'
 import DataTable from './DataTable'
@@ -11,134 +11,180 @@ const EXAMPLES = [
   'What is our total payroll cost year to date?',
 ]
 
+function ResultCard({ turn }) {
+  const [sqlOpen, setSqlOpen] = useState(false)
+  const { query, result, error } = turn
+
+  return (
+    <div className="chat-turn">
+      {/* User bubble */}
+      <div className="chat-user-bubble">{query}</div>
+
+      {/* AI response */}
+      <div className="chat-ai-bubble">
+        {error ? (
+          <div className="chat-error">{error}</div>
+        ) : result ? (
+          <>
+            {result.summary && (
+              <div className="chat-summary">{result.summary}</div>
+            )}
+
+            {/* SQL toggle */}
+            <button className="sql-toggle" onClick={() => setSqlOpen(v => !v)}>
+              {sqlOpen ? '▾' : '▸'} Generated SQL
+            </button>
+            {sqlOpen && (
+              <div className="ai-sql-block">
+                <pre>{result.generated_sql}</pre>
+              </div>
+            )}
+
+            {/* Chart */}
+            {result.chart && (
+              <div className="chat-chart-wrap">
+                <div className="chart-container">
+                  <ChartView report={result} />
+                </div>
+              </div>
+            )}
+
+            {/* Table */}
+            {result.data?.length > 0 && (
+              <div>
+                <div className="section-label" style={{ marginTop: '1rem' }}>
+                  {result.data.length} row{result.data.length !== 1 ? 's' : ''}
+                </div>
+                <DataTable data={result.data} />
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="spinner" style={{ width: 20, height: 20, borderWidth: 2 }} />
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default function AiTab() {
-  const [query, setQuery]     = useState('')
-  const [loading, setLoading] = useState(false)
-  const [result, setResult]   = useState(null)
-  const [comingSoon, setComingSoon] = useState(false)
-  const [error, setError]     = useState(null)
+  const [conversation, setConversation] = useState([])   // [{id, query, result, error}]
+  const [query,    setQuery]    = useState('')
+  const [loading,  setLoading]  = useState(false)
+  const bottomRef  = useRef(null)
+
+  // Scroll to latest message after each update
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [conversation])
+
+  // history sent to the API: prior successful turns only
+  function buildHistory() {
+    return conversation
+      .filter(t => t.result?.generated_sql)
+      .map(t => ({ query: t.query, sql: t.result.generated_sql }))
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
-    if (!query.trim()) return
+    const q = query.trim()
+    if (!q || loading) return
+
+    const id = Date.now()
+    setConversation(prev => [...prev, { id, query: q, result: null, error: null }])
+    setQuery('')
     setLoading(true)
-    setResult(null)
-    setError(null)
-    setComingSoon(false)
 
     try {
-      const data = await runAdhocQuery(query.trim())
-      setResult(data)
+      const data = await runAdhocQuery(q, buildHistory())
+      setConversation(prev =>
+        prev.map(t => t.id === id ? { ...t, result: data } : t)
+      )
     } catch (err) {
-      if (err.message === 'COMING_SOON') setComingSoon(true)
-      else setError(err.message)
+      setConversation(prev =>
+        prev.map(t => t.id === id ? { ...t, error: err.message } : t)
+      )
     } finally {
       setLoading(false)
     }
   }
 
+  function clearConversation() {
+    setConversation([])
+    setQuery('')
+  }
+
+  const hasHistory = conversation.length > 0
+
   return (
     <div className="ai-wrap">
 
-      {/* Input card */}
-      <div className="ai-input-card">
-        <h2>Ask a Question About Your Data</h2>
-        <p>Type a question in plain English. The AI will generate a SQL query, run it, and return a summary, table, and chart.</p>
-
-        <form onSubmit={handleSubmit}>
-          <textarea
-            className="query-textarea"
-            placeholder="e.g. How many active beneficiaries do we have from each country?"
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            onKeyDown={e => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) handleSubmit(e) }}
-          />
-
+      {/* ── Empty state ── */}
+      {!hasHistory && (
+        <div className="ai-input-card">
+          <h2>Ask a Question About Your Data</h2>
+          <p>
+            Type a question in plain English. The AI will generate SQL, run it,
+            and return a summary, chart, and table. Follow-up questions remember context.
+          </p>
           <div className="example-queries">
             <span style={{ fontSize: '0.72rem', color: '#94a3b8', alignSelf: 'center' }}>Try:</span>
             {EXAMPLES.map(ex => (
-              <button
-                key={ex}
-                type="button"
-                className="example-chip"
-                onClick={() => setQuery(ex)}
-              >
-                {ex}
-              </button>
+              <button key={ex} type="button" className="example-chip"
+                onClick={() => setQuery(ex)}>{ex}</button>
             ))}
           </div>
+        </div>
+      )}
 
+      {/* ── Conversation thread ── */}
+      {hasHistory && (
+        <div className="chat-thread">
+          <div className="chat-thread-header">
+            <span className="section-label" style={{ margin: 0 }}>
+              {conversation.length} message{conversation.length !== 1 ? 's' : ''}
+            </span>
+            <button className="chat-clear-btn" onClick={clearConversation}>
+              Clear conversation
+            </button>
+          </div>
+
+          {conversation.map(turn => (
+            <ResultCard key={turn.id} turn={turn} />
+          ))}
+
+          <div ref={bottomRef} />
+        </div>
+      )}
+
+      {/* ── Input (always visible) ── */}
+      <div className={`ai-input-bar${hasHistory ? ' ai-input-bar--sticky' : ''}`}>
+        <form onSubmit={handleSubmit} className="ai-input-form">
+          <input
+            className="chat-input"
+            placeholder={hasHistory
+              ? 'Ask a follow-up question…'
+              : 'e.g. How many active beneficiaries do we have from each country?'}
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            disabled={loading}
+          />
           <button className="submit-btn" type="submit" disabled={loading || !query.trim()}>
-            {loading ? 'Thinking…' : 'Generate Report'}
+            {loading ? '…' : 'Ask'}
           </button>
         </form>
+
+        {!hasHistory && (
+          <div className="example-queries" style={{ marginTop: '0.5rem' }}>
+            <span style={{ fontSize: '0.72rem', color: '#94a3b8', alignSelf: 'center' }}>Try:</span>
+            {EXAMPLES.map(ex => (
+              <button key={ex} type="button" className="example-chip"
+                onClick={() => setQuery(ex)}>{ex}</button>
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Loading */}
-      {loading && (
-        <div className="loading">
-          <div className="spinner" />
-          Generating SQL and running query…
-        </div>
-      )}
-
-      {/* Coming soon */}
-      {comingSoon && (
-        <div className="coming-soon-box">
-          <div className="cs-icon">🤖</div>
-          <h3>AI Query — Coming Soon</h3>
-          <p>
-            The natural language → SQL endpoint is the next feature being built.
-            The UI is ready and will display results here as soon as the API endpoint is live.
-          </p>
-        </div>
-      )}
-
-      {/* Error */}
-      {error && <div className="error-box">{error}</div>}
-
-      {/* Results */}
-      {result && (
-        <div className="ai-result-card">
-
-          {/* Summary */}
-          {result.summary && (
-            <div>
-              <div className="section-label">Summary</div>
-              <div className="ai-summary">{result.summary}</div>
-            </div>
-          )}
-
-          {/* Generated SQL */}
-          {result.generated_sql && (
-            <div>
-              <div className="section-label">Generated SQL</div>
-              <div className="ai-sql-block">
-                <pre>{result.generated_sql}</pre>
-              </div>
-            </div>
-          )}
-
-          {/* Chart */}
-          {result.chart && (
-            <div>
-              <div className="section-label">Chart — {result.chart.title}</div>
-              <div className="chart-container">
-                <ChartView report={result} />
-              </div>
-            </div>
-          )}
-
-          {/* Table */}
-          {result.data?.length > 0 && (
-            <div>
-              <div className="section-label">Data ({result.data.length} rows)</div>
-              <DataTable data={result.data} />
-            </div>
-          )}
-
-        </div>
-      )}
     </div>
   )
 }

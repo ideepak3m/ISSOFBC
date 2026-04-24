@@ -146,8 +146,14 @@ def _extract_json(text: str) -> dict:
     return json.loads(text)
 
 
-class AdhocRequest(BaseModel):
+class HistoryTurn(BaseModel):
     query: str
+    sql:   str
+
+
+class AdhocRequest(BaseModel):
+    query:   str
+    history: list[HistoryTurn] = []
 
 
 @router.post("/adhoc")
@@ -163,12 +169,18 @@ def adhoc_query(req: AdhocRequest):
     client = _llm()
 
     # ── Step 1: generate SQL + chart spec ──────────────────────────────────
+    # Prepend conversation history so the LLM understands follow-up questions.
+    # Each prior turn becomes a user message (the question) followed by an
+    # assistant message (the SQL JSON it produced), giving the model full context.
+    messages: list[dict] = [{"role": "system", "content": SQL_SYSTEM}]
+    for turn in req.history:
+        messages.append({"role": "user",      "content": turn.query})
+        messages.append({"role": "assistant",  "content": json.dumps({"sql": turn.sql})})
+    messages.append({"role": "user", "content": user_q})
+
     sql_resp = client.chat.completions.create(
         model=MODEL,
-        messages=[
-            {"role": "system", "content": SQL_SYSTEM},
-            {"role": "user",   "content": user_q},
-        ],
+        messages=messages,
         temperature=0,
         max_tokens=800,
     )

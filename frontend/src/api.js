@@ -18,11 +18,11 @@ export async function fetchReport(path, filter = {}) {
   return res.json()
 }
 
-export async function runAdhocQuery(userQuery) {
+export async function runAdhocQuery(userQuery, history = []) {
   const res = await fetch(`${BASE}/api/adhoc`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query: userQuery }),
+    body: JSON.stringify({ query: userQuery, history }),
   })
   if (res.status === 404) throw new Error('COMING_SOON')
   if (!res.ok) {
