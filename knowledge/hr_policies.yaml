@@ -1,0 +1,132 @@
+category: HR & People
+documents:
+
+  - id: hr-001
+    title: Annual Leave Policy
+    tags: [leave, vacation, annual leave, time off, holidays, PTO]
+    content: |
+      ISSofBC provides paid annual leave to all permanent employees.
+      - Employees with less than 5 years of service: 15 days (3 weeks) per calendar year.
+      - Employees with 5 or more years of service: 20 days (4 weeks) per calendar year.
+      - Casual and contract staff are not eligible for paid annual leave.
+      - Leave accrues monthly and unused leave up to 5 days may be carried over to the next year.
+      - Requests must be submitted at least 2 weeks in advance via BambooHR.
+      - Manager approval is required. Requests during December 15–January 5 require 4 weeks notice.
+      - Statutory holidays are in addition to annual leave and follow BC Employment Standards.
+    forms: [HR-LV-001]
+    portal: "BambooHR > Time Off > Request Leave"
+
+  - id: hr-002
+    title: Sick Leave Policy
+    tags: [sick leave, sick day, illness, medical, health, sick]
+    content: |
+      All permanent employees receive 10 paid sick days per calendar year.
+      - Sick leave does not carry over to the next calendar year.
+      - For absences of 3 or more consecutive days, a doctor's note is required.
+      - Employees must notify their direct manager before 9:00 AM on the day of absence.
+      - Notification should be sent via Teams message or phone call — email alone is not sufficient.
+      - Extended illness beyond 10 days may qualify for short-term disability through Pacific Blue Cross.
+      Contact HR at hr@issofbc.org for accommodation or disability claims.
+    forms: [HR-SK-001]
+    portal: "BambooHR > Time Off > Report Sick Day"
+
+  - id: hr-003
+    title: Remote Work and Hybrid Policy
+    tags: [remote, work from home, hybrid, WFH, telecommute]
+    content: |
+      ISSofBC operates on a hybrid work model for eligible administrative roles.
+      - Employees may work remotely up to 2 days per week, subject to manager approval.
+      - Client-facing roles (settlement workers, employment counsellors) must be on-site
+        for all client appointments.
+      - A remote work agreement (HR-RW-001) must be signed before beginning hybrid work.
+      - Employees are responsible for maintaining a safe, confidential home workspace.
+      - Equipment (laptop, headset) is provided by ISSofBC; personal equipment is not supported by IT.
+      - VPN must be active at all times when accessing ISSofBC systems remotely.
+      - Remote work privileges may be revoked if performance issues arise.
+    forms: [HR-RW-001]
+    portal: "SharePoint > HR > Remote Work Agreement"
+
+  - id: hr-004
+    title: Performance Review Process
+    tags: [performance review, appraisal, evaluation, annual review, goals, KPIs]
+    content: |
+      ISSofBC conducts annual performance reviews each April for all permanent staff.
+      Timeline:
+        - March 1: Self-assessment forms distributed via BambooHR.
+        - March 31: Self-assessments due.
+        - April 1–30: Manager meetings scheduled and reviews completed.
+        - May 15: Final reviews signed off and filed in BambooHR.
+      Process:
+        - Staff complete a self-assessment covering goals achieved, challenges, and development needs.
+        - Managers complete a parallel assessment using the same rubric (HR-PR-002).
+        - A 1:1 meeting is held to discuss the assessments.
+        - Agreed goals for the next 12 months are documented in BambooHR.
+        - Pay increases linked to performance are effective July 1.
+      Ratings scale: 1 (Needs Improvement), 2 (Meets Expectations), 3 (Exceeds Expectations), 4 (Outstanding).
+    forms: [HR-PR-001, HR-PR-002]
+    portal: "BambooHR > Performance > My Review"
+
+  - id: hr-005
+    title: New Staff Onboarding
+    tags: [onboarding, new hire, orientation, first day, joining, new employee, start]
+    content: |
+      All new hires must complete the ISSofBC onboarding checklist within their first 2 weeks.
+      Before Day 1 (HR completes):
+        - IT account creation request sent to it@issofbc.org (form IT-NE-001)
+        - BambooHR profile created
+        - Paywork record created
+        - Buddy/mentor assigned
+      Day 1:
+        - Building access card issued at reception (ID required)
+        - IT setup: laptop, email, Teams, VPN token issued
+        - Signed copies of: Employment Agreement, Privacy Policy (HR-PP-001), Code of Conduct (HR-CC-001)
+        - Tour of office and introduction to team
+      Week 1:
+        - Newtract CRM training with IT (book via SharePoint > Training > Book Session)
+        - BambooHR self-service training (online module on SharePoint)
+        - Health & Safety orientation (mandatory, HR-HS-001)
+        - FOIPPA and client confidentiality training (mandatory, HR-FOIP-001)
+      Week 2:
+        - Shadow a senior colleague in their program area
+        - Complete probation goals worksheet with manager (HR-PG-001)
+    forms: [IT-NE-001, HR-PP-001, HR-CC-001, HR-HS-001, HR-FOIP-001, HR-PG-001]
+    portal: "SharePoint > HR > Onboarding Checklist"
+
+  - id: hr-006
+    title: Employee Benefits
+    tags: [benefits, health, dental, MSP, extended health, insurance, Pacific Blue Cross, EAP]
+    content: |
+      Permanent employees working 20+ hours/week are eligible for group benefits after 3 months.
+      Coverage includes:
+        - Extended Health (Pacific Blue Cross): 80% coverage for prescription drugs, vision ($250/year),
+          paramedical ($500/year per practitioner including physiotherapy, massage, psychology).
+        - Dental: 80% basic, 60% major restorative, $1,500 annual maximum.
+        - Group Life Insurance: 2x annual salary.
+        - Employee Assistance Program (EAP): 8 free counselling sessions per year via Homewood Health.
+          Access: 1-800-663-1142 or app.homewoodhealth.com (confidential, not reported to employer).
+        - Short-term disability: 70% of salary for up to 17 weeks (after 5-day waiting period).
+        - Long-term disability: 60% of salary after 17 weeks.
+      Enrolment: Complete PBC-EN-001 and submit to hr@issofbc.org within 30 days of eligibility.
+      Changes to coverage allowed during annual open enrolment (November) or after qualifying life event.
+    forms: [PBC-EN-001, PBC-CH-001]
+    portal: "Pacific Blue Cross portal: my.pac.bluecross.ca | Employee ID is your staff number"
+
+  - id: hr-007
+    title: Code of Conduct
+    tags: [code of conduct, behaviour, harassment, discrimination, ethics, conduct, misconduct]
+    content: |
+      All ISSofBC staff, volunteers, and contractors must uphold the Code of Conduct at all times.
+      Key principles:
+        - Treat all clients, colleagues, and partners with dignity and respect.
+        - Zero tolerance for harassment, discrimination, or bullying based on any protected ground.
+        - Maintain strict client confidentiality per FOIPPA and ISSofBC Privacy Policy.
+        - Declare any conflicts of interest in writing to your manager (HR-COI-001).
+        - Do not accept gifts from clients or vendors valued over $25.
+        - Social media: do not post client information, organisational financials, or internal disputes.
+      Reporting misconduct:
+        - Report to your direct manager, or if the manager is involved, to the Executive Director.
+        - Anonymous reports can be submitted via the Ethics Hotline: 1-800-555-0199.
+        - All reports are investigated confidentially within 10 business days.
+      Violations may result in disciplinary action up to and including termination.
+    forms: [HR-CC-001, HR-COI-001]
+    portal: "SharePoint > HR > Policies > Code of Conduct"

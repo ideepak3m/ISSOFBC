@@ -18,6 +18,19 @@ export async function fetchReport(path, filter = {}) {
   return res.json()
 }
 
+export async function askChatbot(query, history = []) {
+  const res = await fetch(`${BASE}/api/chatbot`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query, history }),
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    throw new Error(err.detail || 'Assistant unavailable')
+  }
+  return res.json()
+}
+
 export async function runAdhocQuery(userQuery, history = []) {
   const res = await fetch(`${BASE}/api/adhoc`, {
     method: 'POST',

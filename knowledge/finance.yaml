@@ -1,0 +1,123 @@
+category: Finance & Grants
+documents:
+
+  - id: fin-001
+    title: Expense Submission Process
+    tags: [expense, reimbursement, claim, receipt, spending, purchase, out of pocket, petty cash]
+    content: |
+      All ISSofBC expenses must be pre-approved and submitted within 30 days of being incurred.
+      Step-by-step:
+        1. Obtain prior approval from your manager for any expense over $50 (email confirmation is sufficient).
+        2. Keep all original receipts. Credit card statements are NOT accepted as receipts.
+        3. Complete Expense Claim Form (BC-EXP-001) — available on SharePoint > Finance > Forms.
+        4. Attach all receipts (scanned or photographed, minimum 300 DPI).
+        5. Indicate the expense category and program code (see fin-002 for codes).
+        6. Submit to your manager for approval, then to finance@issofbc.org by the 5th of the following month.
+        7. Approved expenses are reimbursed in the next payroll run (bi-weekly via Paywork).
+      Limits:
+        - No pre-approval required for expenses under $25 (keep receipts).
+        - Meals (client or team): up to $20/person for lunch, $35/person for dinner, with business purpose noted.
+        - Taxis/rideshare for client transport: allowable with client ID noted on receipt.
+      Late submissions (beyond 30 days) require Executive Director approval.
+    forms: [BC-EXP-001]
+    portal: "SharePoint > Finance > Forms > Expense Claim | Submit to: finance@issofbc.org"
+
+  - id: fin-002
+    title: Program Codes and Expense Categories
+    tags: [program code, cost centre, GL code, account, budget, expense category, coding]
+    content: |
+      All expenses must be coded to the correct program and expense category for grant reporting.
+      Program codes:
+        - SSP-FED: Settlement Services Program (federal)
+        - ELT-FED: English Language Training (federal)
+        - ERP-PROV: Employment Readiness Program (provincial)
+        - YIP-FDN: Youth Integration Program (foundation funded)
+        - SNP-FED: Senior Newcomers Program (federal)
+        - HAP-PROV: Housing Assistance Program (provincial)
+        - GEN-ADMIN: General Administration (not attributable to a specific program)
+      Expense categories (Business Central GL codes):
+        - 5100: Staff Salaries and Benefits
+        - 5200: Professional Development and Training
+        - 5300: Program Supplies and Materials
+        - 5400: Client Transportation and Childcare
+        - 5500: Technology and Software
+        - 5600: Facilities and Rent Allocation
+        - 5700: Communications and Marketing
+        - 5800: Travel and Mileage
+        - 5900: Miscellaneous (requires description)
+      Mileage reimbursement: $0.62/km effective April 2025. Use form BC-ML-001.
+      Questions on coding: Contact finance@issofbc.org or ext. 301.
+    forms: [BC-ML-001]
+    portal: "Business Central > General Ledger > Chart of Accounts"
+
+  - id: fin-003
+    title: Grant Reporting Requirements
+    tags: [grant, reporting, IRCC, funder, progress report, financial report, grant compliance, government]
+    content: |
+      ISSofBC receives funding from multiple government and foundation funders, each with distinct
+      reporting requirements.
+      Federal (IRCC) — Settlement programs (SSP, ELT):
+        - Quarterly Statistical Report: due 30 days after quarter end. Submit via GovConnect Portal
+          (govconnect.canada.ca) using username/password in the Finance password vault (LastPass).
+        - Annual Financial Report: due 90 days after fiscal year end (March 31). Includes audited financials.
+        - Data required: clients served, service hours, demographic breakdown, outcomes achieved.
+        - Source data pulled from Newtract by the Data team — request 2 weeks before deadline.
+      Province of BC — Employment and youth programs (ERP, YIP):
+        - Quarterly Progress Report: due last business day of each quarter. Submit via ASPIRE Portal
+          (aspire.gov.bc.ca). Login credentials in LastPass.
+        - Semi-annual Financial Statement: April 30 and October 31.
+      Foundation funders (Vancouver Foundation, New Horizons, United Way):
+        - Annual report per grant agreement. Dates vary — see the Grant Calendar in SharePoint
+          (SharePoint > Finance > Grant Calendar).
+        - Narrative report + financial statement + outcome evidence (photos, client testimonials with consent).
+      Grant amendments: Any budget reallocation over 10% between line items requires written funder approval.
+      Contact the Grants Manager (grants@issofbc.org, ext. 305) for all reporting questions.
+    forms: [GR-QR-001, GR-AR-001]
+    portal: "GovConnect: govconnect.canada.ca | ASPIRE: aspire.gov.bc.ca | SharePoint > Finance > Grant Calendar"
+
+  - id: fin-004
+    title: Donation Processing and Receipting
+    tags: [donation, donor, receipt, tax receipt, fundraising, in-kind, cash donation, cheque]
+    content: |
+      ISSofBC is a registered charity (BN: 89XXXXXXX RR 0001) and can issue official tax receipts for
+      eligible donations of $20 or more.
+      Cash and cheque donations:
+        - Received at reception — issue a manual receipt (BC-DON-RCPT) on the spot.
+        - Log in Business Central > Revenue > Donations within the same business day.
+        - Cheques deposited by the finance team at TD Bank (main branch, West Broadway) every Monday.
+      Online donations (Canada Helps portal):
+        - Donors receive an automatic tax receipt from CanadaHelps.
+        - Finance team downloads the monthly report from CanadaHelps and reconciles with Business Central.
+      In-kind donations (goods, services):
+        - Value must be assessed and agreed with the donor — use fair market value.
+        - Tax receipts for in-kind are issued only if goods/services are used in programs.
+        - Complete form BC-DON-IK-001 and obtain executive approval for donations over $500.
+      Donor database: All donors recorded in Business Central. Do not create duplicate records.
+      Donation acknowledgement letters: Sent within 5 business days. Templates in SharePoint > Communications.
+      Questions: Contact the Finance team at finance@issofbc.org or ext. 301.
+    forms: [BC-DON-RCPT, BC-DON-IK-001]
+    portal: "Business Central > Revenue > Donations | CanadaHelps admin: www.canadahelps.org/en/admin"
+
+  - id: fin-005
+    title: Budget Management and Approval Process
+    tags: [budget, approval, spending, purchase order, procurement, vendor, contract, finance approval]
+    content: |
+      ISSofBC operates on an April 1–March 31 fiscal year. Budgets are set each February/March.
+      Spending authority limits:
+        - Up to $500: Direct supervisor approval (email sufficient).
+        - $500–$5,000: Program Manager approval + Finance notification (finance@issofbc.org).
+        - $5,000–$20,000: Executive Director approval required before commitment.
+        - Over $20,000: Board of Directors approval required; minimum 3 vendor quotes.
+      Procurement process for purchases over $5,000:
+        1. Complete a Purchase Requisition (BC-PR-001) and submit to finance@issofbc.org.
+        2. Finance reviews budget availability and codes the request.
+        3. Obtain required approval based on thresholds above.
+        4. Finance issues a Purchase Order (PO) number. Do not commit to vendor without a PO.
+        5. Vendor invoice must reference the PO number. Submit to finance@issofbc.org.
+        6. Payment processed within 30 days of invoice receipt.
+      Credit card (corporate Visa, issued to managers):
+        - Statements reconciled monthly. Submit receipts by the 3rd of each month (BC-CC-001).
+        - Personal expenses on corporate card must be repaid within 5 business days.
+      Budget variance: Report variances over 15% to the Finance Manager immediately.
+    forms: [BC-PR-001, BC-CC-001]
+    portal: "Business Central > Purchasing > Purchase Requisitions | finance@issofbc.org"

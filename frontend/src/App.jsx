@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import BiTab from './components/BiTab'
 import AiTab from './components/AiTab'
+import AssistantTab from './components/AssistantTab'
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('bi')
@@ -17,24 +18,26 @@ export default function App() {
             </div>
           </div>
           <nav className="tab-bar">
-            <button
-              className={`tab-btn ${activeTab === 'bi' ? 'active' : ''}`}
-              onClick={() => setActiveTab('bi')}
-            >
+            <button className={`tab-btn ${activeTab === 'bi' ? 'active' : ''}`}
+              onClick={() => setActiveTab('bi')}>
               BI Reports
             </button>
-            <button
-              className={`tab-btn ${activeTab === 'ai' ? 'active' : ''}`}
-              onClick={() => setActiveTab('ai')}
-            >
+            <button className={`tab-btn ${activeTab === 'ai' ? 'active' : ''}`}
+              onClick={() => setActiveTab('ai')}>
               AI Query
+            </button>
+            <button className={`tab-btn ${activeTab === 'kb' ? 'active' : ''}`}
+              onClick={() => setActiveTab('kb')}>
+              Assistant
             </button>
           </nav>
         </div>
       </header>
 
       <main className="main">
-        {activeTab === 'bi' ? <BiTab /> : <AiTab />}
+        {activeTab === 'bi' && <BiTab />}
+        {activeTab === 'ai' && <AiTab />}
+        {activeTab === 'kb' && <AssistantTab />}
       </main>
     </div>
   )

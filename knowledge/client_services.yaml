@@ -1,0 +1,136 @@
+category: Client Services
+documents:
+
+  - id: cs-001
+    title: New Client Intake Process
+    tags: [intake, new client, registration, beneficiary, onboarding client, referral, walk-in]
+    content: |
+      All new clients must complete the ISSofBC intake process before receiving services.
+      Step 1 — Initial Contact:
+        - Walk-ins are welcomed at reception during business hours (Mon–Fri 8:30 AM – 4:30 PM).
+        - Phone or email referrals are booked for an intake appointment within 3 business days.
+        - Referral sources: IRCC, VCH, school districts, other settlement agencies, self-referral.
+      Step 2 — Eligibility Screening:
+        - Confirm client holds eligible immigration status (Refugee, PR, Work Permit, Study Permit, or Citizen
+          within 5 years of arrival).
+        - If ineligible, provide a referral list (CS-REF-001) to appropriate organisations.
+      Step 3 — Intake Appointment (45–60 minutes):
+        - Complete the New Beneficiary record in Newtract CRM (Newtract > Client Intake > New Beneficiary).
+        - Collect: government-issued ID, immigration documents (PR card, COPR, refugee documentation),
+          contact information, household composition.
+        - Complete Needs Assessment form (CS-NA-001) covering: language, employment, housing, health, education.
+        - Explain confidentiality and obtain signed Consent to Services form (CS-CON-001).
+        - Assign primary settlement worker.
+      Step 4 — Service Plan:
+        - Within 5 business days, the assigned worker creates an Initial Service Plan in Newtract.
+        - Plan is reviewed with the client and signed (CS-SP-001).
+        - Client receives a welcome package including program brochures and contact card.
+    forms: [CS-NA-001, CS-CON-001, CS-SP-001, CS-REF-001]
+    portal: "Newtract CRM > Client Intake > New Beneficiary"
+
+  - id: cs-002
+    title: Client Eligibility Criteria
+    tags: [eligibility, who qualifies, who can apply, immigration status, criteria, services available]
+    content: |
+      ISSofBC services are funded under federal and provincial settlement agreements.
+      Eligible clients:
+        - Government-Assisted Refugees (GARs) and Blended Visa Office Referred (BVOR) refugees
+        - Privately Sponsored Refugees (PSRs)
+        - Permanent Residents (within 5 years of landing)
+        - Protected Persons / Convention Refugees
+        - Temporary residents with valid Work or Study permits (selected programs only)
+        - Canadian Citizens who arrived as immigrants within the last 5 years
+      Not eligible for federally funded settlement services:
+        - Visitor visa holders
+        - Undocumented individuals (refer to community health/legal aid)
+        - International students enrolled in private institutions (some provincial programs may apply)
+      Note: Employment-related programs (ERP) may serve clients up to 10 years post-landing under
+      provincial funding. Verify funding source with your program manager before enrolling.
+      When in doubt, log the inquiry in Newtract and consult your supervisor.
+    forms: [CS-EL-001]
+    portal: "Newtract CRM > Client Record > Eligibility Tab"
+
+  - id: cs-003
+    title: Service Delivery Logging
+    tags: [service log, logging, service delivery, case note, contact log, record service, service hours]
+    content: |
+      All client interactions must be logged in Newtract CRM within 24 hours of service delivery.
+      How to log a service:
+        1. Go to Newtract CRM > Services > Log Service Delivery.
+        2. Search for the client by name or ID number.
+        3. Select service type from the dropdown (see approved service type list CS-SVC-002).
+        4. Enter date, duration in minutes, location (office / community / remote / phone).
+        5. Write a brief case note (3–5 sentences minimum) describing the service provided,
+           client response, and any follow-up required.
+        6. If a follow-up is needed, check "Follow-up Required" and set a reminder date.
+        7. Link to relevant program enrollment if applicable.
+        8. Save and submit — supervisor will see logged services in their dashboard.
+      Service types include: Settlement Counselling, Employment Support, Language Referral,
+      Housing Assistance, Legal Referral, Health Navigation, Crisis Intervention, Group Session.
+      Minimum logging requirement: every client contact, even phone calls under 10 minutes.
+    forms: [CS-SVC-001]
+    portal: "Newtract CRM > Services > Log Service Delivery"
+
+  - id: cs-004
+    title: Client Confidentiality and Privacy
+    tags: [confidentiality, privacy, FOIPPA, consent, data protection, sharing information, client info]
+    content: |
+      ISSofBC is bound by BC's Freedom of Information and Protection of Privacy Act (FOIPPA)
+      and the federal Privacy Act where applicable.
+      Core rules:
+        - Never share client information with a third party without written consent (CS-CON-002).
+        - Exceptions: imminent safety risk to the client or others, court order, mandatory reporting.
+        - Do not discuss clients in public spaces, elevators, or shared areas.
+        - Client files in Newtract are accessible only to assigned workers and their supervisors.
+        - Do not print client records unless necessary; printed records must be stored in locked cabinets.
+        - Photographs of clients require a separate Photo Consent form (CS-CON-003).
+      Information sharing with partners (e.g., IRCC, Service Canada):
+        - Only aggregate/statistical data may be shared without individual consent.
+        - Grant reporting uses anonymised data only.
+      Data breach: Report immediately to your manager AND privacy@issofbc.org within 2 hours.
+      Annual FOIPPA refresher training is mandatory (complete via SharePoint > Training > FOIPPA).
+    forms: [CS-CON-001, CS-CON-002, CS-CON-003]
+    portal: "SharePoint > Policies > Privacy & Confidentiality"
+
+  - id: cs-005
+    title: Referral Procedures
+    tags: [referral, refer, external referral, partner agency, transfer, other services, community]
+    content: |
+      ISSofBC has formal referral partnerships with over 40 community agencies.
+      Internal referral (between ISSofBC programs):
+        - Use Newtract CRM > Client Record > Add Referral.
+        - Select the target program/service from the internal dropdown.
+        - The receiving worker is notified automatically.
+        - Warm handover by phone or in person is encouraged for complex cases.
+      External referral:
+        - Complete External Referral Form (CS-REF-002) with client consent.
+        - Email referral to partner agency and document in Newtract case notes.
+        - Follow up within 5 business days to confirm client connection.
+        - Key partners: VCH Mental Health (health), Legal Aid BC (legal), BC Housing (housing),
+          YMCA (childcare), Vancouver School Board (school registration), WorkBC (employment 10+ years).
+      Warm transfer protocol: For vulnerable clients (mental health, trauma, family violence),
+      always conduct a warm transfer — never just provide a phone number.
+      Referral directory is maintained in SharePoint > Client Services > Partner Directory (updated quarterly).
+    forms: [CS-REF-001, CS-REF-002]
+    portal: "SharePoint > Client Services > Partner Directory | Newtract > Client Record > Add Referral"
+
+  - id: cs-006
+    title: Mandatory Reporting Obligations
+    tags: [mandatory reporting, child protection, abuse, neglect, MCFD, safety, reporting duty]
+    content: |
+      ISSofBC staff are mandated reporters under BC's Child, Family and Community Service Act (CFCSA).
+      When to report:
+        - You have reason to believe a child is or may be abused or neglected.
+        - This duty applies even if you received the information in confidence.
+        - "Reason to believe" is a lower threshold than certainty — you do not need proof.
+      How to report:
+        - Call the BC Child Abuse Hotline: 1-800-663-9122 (available 24/7).
+        - Do NOT investigate yourself or confront the alleged abuser.
+        - Notify your supervisor immediately after making the report.
+        - Document the report in Newtract case notes within 2 hours (CS-MR-001).
+      Adult protection concerns (elder abuse, abuse of a person with disability):
+        - Report to the Community Response Network or RCMP if there is immediate danger.
+        - Consult your supervisor for non-emergency situations.
+      Failure to report is an offence under the CFCSA and may result in disciplinary action.
+    forms: [CS-MR-001]
+    portal: "BC Child Abuse Hotline: 1-800-663-9122 | Notify supervisor immediately"

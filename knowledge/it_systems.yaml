@@ -1,0 +1,138 @@
+category: IT & Systems
+documents:
+
+  - id: it-001
+    title: Newtract CRM — Staff Guide
+    tags: [Newtract, CRM, client database, system, how to use, login, Newtract guide]
+    content: |
+      Newtract is ISSofBC's client relationship management system for all client and program data.
+      Login: portal.newtract.ca | Username: your ISSofBC email | Password: set on first login.
+      Key modules:
+        - Client Intake: Create and manage beneficiary records.
+        - Programs: Enrol clients, track attendance, log sessions.
+        - Services: Log all service delivery interactions.
+        - Outcomes: Record milestones and outcomes achieved.
+        - Reports: Pre-built reports for grant reporting (pull data for IRCC, province).
+        - Interpreter Booking: Book interpretation services 48 hours in advance.
+      Common tasks:
+        - Log a service: Newtract > Services > Log Service Delivery.
+        - Enrol a client in a program: Client Record > Programs > Add Enrollment.
+        - View your caseload: Newtract > My Clients > Active Caseload.
+        - Book interpreter: Newtract > Client Record > Book Interpreter.
+        - Generate a client report: Newtract > Reports > Client Summary.
+      Data entry rules:
+        - All fields marked with * are mandatory.
+        - Use full legal names as they appear on immigration documents.
+        - Date format: YYYY-MM-DD (the system enforces this).
+        - Case notes must be professional and objective — no personal opinions.
+      Support: Submit IT tickets via SharePoint > IT Support > New Ticket, or email it@issofbc.org.
+      Training: Book a refresher session via SharePoint > Training > Book Session.
+    forms: []
+    portal: "Newtract CRM: portal.newtract.ca | IT Support: it@issofbc.org"
+
+  - id: it-002
+    title: BambooHR — Staff Self-Service Guide
+    tags: [BambooHR, HR system, time off, leave request, pay stub, personal info, BambooHR guide]
+    content: |
+      BambooHR is ISSofBC's HR information system. All staff use it for self-service HR functions.
+      Login: issofbc.bamboohr.com | Username: your ISSofBC email | SSO with Microsoft 365.
+      Key features for staff:
+        - Time Off: Request leave, view balances, see team calendar.
+          Path: BambooHR > Time Off > Request Time Off.
+        - Pay Stubs: View and download pay stubs (updated after each pay run by Paywork).
+          Path: BambooHR > Pay > Pay Stubs.
+        - My Info: Update your personal details (address, emergency contact, banking).
+          Path: BambooHR > My Info > Personal.
+        - Documents: Access your employment agreement, policies, and HR letters.
+          Path: BambooHR > Documents.
+        - Performance: Complete self-assessments, view review history.
+          Path: BambooHR > Performance > My Review.
+        - Benefits: View your Pacific Blue Cross enrolment details.
+          Path: BambooHR > Benefits.
+      For managers (additional features):
+        - Approve or decline time-off requests: BambooHR > My Team > Time Off Requests.
+        - View team headcount and org chart: BambooHR > Reports > Headcount.
+        - Initiate a new hire setup: Contact HR — managers do not directly create records.
+      Support: hr@issofbc.org or ext. 210.
+    forms: []
+    portal: "BambooHR: issofbc.bamboohr.com | SSO with Microsoft 365"
+
+  - id: it-003
+    title: Microsoft 365 — Teams, SharePoint and Email
+    tags: [Microsoft 365, Teams, SharePoint, email, Outlook, Office 365, OneDrive, chat, video call]
+    content: |
+      ISSofBC uses Microsoft 365 for all communication, document management, and collaboration.
+      Email (Outlook):
+        - Format: firstname.lastname@issofbc.org
+        - Retention policy: emails older than 7 years are archived automatically.
+        - Do not use personal email for any ISSofBC business.
+      Teams:
+        - Primary channel for team communication and virtual meetings.
+        - All-staff channel: General. Program-specific channels exist for each team.
+        - Calls and video meetings default to Teams — use the meeting link in calendar invites.
+        - File sharing: Use Teams or SharePoint, not personal OneDrive or USB drives.
+      SharePoint (intranet):
+        - URL: issofbc.sharepoint.com
+        - Key locations:
+            - HR policies: SharePoint > HR > Policies
+            - Finance forms: SharePoint > Finance > Forms
+            - Training: SharePoint > Training
+            - Program resources: SharePoint > Programs > [Program Name]
+            - Partner directory: SharePoint > Client Services > Partner Directory
+            - Grant calendar: SharePoint > Finance > Grant Calendar
+            - Staff directory: SharePoint > Staff Directory
+      OneDrive: For personal working files only. All finalised documents go to SharePoint.
+      IT requests: SharePoint > IT Support > New Ticket, or email it@issofbc.org.
+    forms: []
+    portal: "Outlook/Teams: office.com | SharePoint: issofbc.sharepoint.com | IT: it@issofbc.org"
+
+  - id: it-004
+    title: Password Management and Security
+    tags: [password, reset password, forgot password, security, MFA, multi-factor, LastPass, VPN, IT security]
+    content: |
+      ISSofBC uses LastPass as its enterprise password manager and Microsoft MFA for account security.
+      Password reset:
+        - Microsoft 365 (email, Teams, SharePoint): Visit account.microsoft.com > Reset Password,
+          or call IT at ext. 290 during business hours.
+        - Newtract: Click "Forgot Password" on the login page or contact it@issofbc.org.
+        - BambooHR: SSO — reset via Microsoft 365.
+        - Business Central: SSO — reset via Microsoft 365.
+      Multi-factor authentication (MFA):
+        - Required for all Microsoft 365 and Newtract logins.
+        - Use the Microsoft Authenticator app (download from your phone's app store).
+        - If you change your phone, contact IT BEFORE transferring — do not delete the authenticator app.
+      LastPass (password vault):
+        - Shared credentials (GovConnect, ASPIRE, CanadaHelps admin) are stored in the Finance vault.
+        - Access is granted by your manager. Request via SharePoint > IT Support > New Ticket.
+        - Never share your personal LastPass master password.
+      VPN:
+        - Required for all remote access to ISSofBC systems.
+        - VPN client: Cisco AnyConnect. Download from SharePoint > IT > VPN Setup Guide.
+        - VPN token (RSA SecurID) issued on request — apply via form IT-VPN-001.
+      Security incidents: Report immediately to it@issofbc.org and your manager.
+      Annual cybersecurity training is mandatory (SharePoint > Training > Cybersecurity — complete by October 31).
+    forms: [IT-VPN-001]
+    portal: "IT Support: it@issofbc.org | Ext. 290 | SharePoint > IT Support > New Ticket"
+
+  - id: it-005
+    title: Business Central — Finance System Guide
+    tags: [Business Central, finance system, accounting, GL, invoice, budget, BC guide, Dynamics]
+    content: |
+      Business Central (Microsoft Dynamics 365) is ISSofBC's financial management system.
+      Access: finance.issofbc.org | SSO with Microsoft 365.
+      Access is restricted — only Finance team members and Program Managers have login access.
+      Staff without access: Submit expenses via BC-EXP-001 to finance@issofbc.org.
+      For Finance team — key modules:
+        - General Ledger: Record transactions, view account balances, run GL reports.
+        - Accounts Payable: Enter vendor invoices, process payments, manage purchase orders.
+        - Accounts Receivable: Record grant drawdowns, donation income, invoice funders.
+        - Budget Management: View program budgets, actual vs budget comparison.
+        - Reporting: Monthly financial statements, variance reports, grant financial reports.
+      Month-end close schedule:
+        - Transactions cut-off: last working day of the month.
+        - Finance team closes the period by the 10th of the following month.
+        - Budget variance reports distributed to Program Managers by the 15th.
+      Chart of Accounts: See fin-002 for expense codes. Revenue codes start with 4000 series.
+      Training: Only Finance staff are trained on Business Central. Contact finance@issofbc.org.
+    forms: []
+    portal: "Business Central: finance.issofbc.org | Finance team: finance@issofbc.org | Ext. 301"

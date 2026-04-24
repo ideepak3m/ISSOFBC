@@ -1,0 +1,132 @@
+category: Programs
+documents:
+
+  - id: pg-001
+    title: Settlement Services Program (SSP)
+    tags: [settlement, SSP, general settlement, newcomer, orientation, IRCC, federal]
+    content: |
+      The Settlement Services Program (SSP) is ISSofBC's flagship federally funded program under IRCC.
+      Purpose: Provide foundational settlement support to newly arrived immigrants and refugees.
+      Eligibility: All eligible newcomers within 5 years of landing (see CS-EL-001).
+      Services offered:
+        - Needs assessment and service planning
+        - Canadian systems orientation (healthcare, education, banking, transit)
+        - Document navigation (SIN, MSP, CRA registration)
+        - Language assessment and referral to LINC/ELSA providers
+        - Social and community connection (peer groups, cultural events)
+        - Crisis intervention and emergency referrals
+      Capacity: 400 active clients at any time.
+      Funding: IRCC Settlement Program — reporting due quarterly via GovConnect Portal.
+      Enrollment: Newtract CRM > Programs > SSP > Enrol Client.
+      Program Coordinator: Maria Santos (ext. 201, msantos@issofbc.org)
+    forms: [CS-NA-001, CS-SP-001]
+    portal: "Newtract CRM > Programs > Settlement Services Program"
+
+  - id: pg-002
+    title: English Language Training Program (ELT)
+    tags: [english, language, ELT, LINC, ELSA, ESL, classes, language training, literacy]
+    content: |
+      The English Language Training Program (ELT) provides language instruction for adult newcomers.
+      Levels offered: CLB 1–4 (Beginner), CLB 5–6 (Intermediate), CLB 7–8 (Advanced).
+      Schedule: Morning classes (9 AM – 12 PM) and Evening classes (6 PM – 9 PM), Mon/Wed/Fri.
+      Location: ISSofBC Learning Centre, Room 204 and Room 206 (also offered via Zoom for remote learners).
+      Eligibility:
+        - Must be an eligible newcomer enrolled with ISSofBC.
+        - Language Benchmark Assessment (LBA) required before enrollment — book via Newtract.
+        - Childcare subsidy available for parents attending morning classes (limited spots, CS-CC-001).
+      Class size: Maximum 16 students per class.
+      Funding: IRCC/ELSA and Province of BC (ESL for Adults).
+      Program Coordinator: James Okafor (ext. 215, jokafor@issofbc.org)
+      Enrollment: Newtract CRM > Programs > ELT > Enrol Client. Waitlist managed in Newtract.
+    forms: [ELT-EN-001, CS-CC-001]
+    portal: "Newtract CRM > Programs > English Language Training"
+
+  - id: pg-003
+    title: Employment Readiness Program (ERP)
+    tags: [employment, job, work, ERP, career, resume, interview, job search, employment program, WorkBC]
+    content: |
+      The Employment Readiness Program (ERP) helps newcomers enter the Canadian job market.
+      Services include:
+        - Resume and cover letter writing workshops (weekly, Tuesdays 10 AM)
+        - Canadian workplace culture orientation
+        - Interview skills coaching (individual sessions, book via Newtract)
+        - LinkedIn profile development
+        - Job search strategy and labour market information
+        - Sector-specific job clubs (healthcare, technology, trades, childcare)
+        - Employer connections and job placement support
+        - 6-month post-placement follow-up
+      Eligibility: Newcomers up to 10 years post-landing (provincial funding allows extended eligibility).
+      Capacity: 150 active participants.
+      Job Placement Target: 60 placements per fiscal year (KPI tracked in Newtract).
+      Funding: Province of BC (Welcoming and Inclusive Communities) and United Way.
+      Program Coordinator: Priya Nair (ext. 224, pnair@issofbc.org)
+      Enrollment: Newtract CRM > Programs > ERP > Enrol Client.
+    forms: [ERP-EN-001, ERP-JP-001]
+    portal: "Newtract CRM > Programs > Employment Readiness Program"
+
+  - id: pg-004
+    title: Youth Integration Program (YIP)
+    tags: [youth, young people, teens, children, YIP, school, education, youth program, under 25]
+    content: |
+      The Youth Integration Program (YIP) supports immigrant and refugee youth aged 13–24.
+      Services:
+        - School registration support and school district navigation
+        - Tutoring referrals and homework help (Wednesday evenings 5–8 PM)
+        - Youth leadership and mentorship circles (monthly)
+        - Mental health workshops and peer support groups
+        - Summer employment readiness (June–August, ages 16–24)
+        - Post-secondary planning (college applications, student loans, scholarships)
+      Eligibility: Ages 13–24, eligible immigration status.
+      Location: ISSofBC Youth Hub, Room 112.
+      Virtual programming: Available for youth unable to attend in person.
+      Important: Parental/guardian consent required for clients under 19 (YIP-CON-001).
+      Mandatory reporter note: Youth workers are mandated reporters — see cs-006.
+      Funding: Vancouver Foundation and Province of BC Youth Programs.
+      Program Coordinator: Aisha Rahman (ext. 231, arahman@issofbc.org)
+      Enrollment: Newtract CRM > Programs > Youth Integration Program.
+    forms: [YIP-EN-001, YIP-CON-001]
+    portal: "Newtract CRM > Programs > Youth Integration Program"
+
+  - id: pg-005
+    title: Senior Newcomers Program (SNP)
+    tags: [seniors, elderly, older adults, SNP, 55+, aging, senior immigrants, grandparents]
+    content: |
+      The Senior Newcomers Program (SNP) provides culturally appropriate services for newcomers 55+.
+      Services:
+        - Social isolation support and peer gatherings (Thursdays 1–3 PM, ISSofBC Community Room)
+        - Navigation of senior benefits: OAS, GIS, CPP, BC Senior's Supplement
+        - Health system navigation (finding family doctors, specialist referrals, pharmacy)
+        - Technology literacy (smartphones, video calling, online banking) — Tuesdays 2–4 PM
+        - Culturally matched volunteer visitor program
+        - Intergenerational connection events (with YIP)
+      Eligibility: Newcomers aged 55+ with eligible immigration status.
+      Capacity: 80 active participants.
+      Important: Many seniors prefer their native language — request an interpreter via
+      Newtract > Client Record > Book Interpreter (48 hours notice required).
+      Funding: New Horizons for Seniors (ESDC) and BC Gaming Commission.
+      Program Coordinator: Linda Chow (ext. 245, lchow@issofbc.org)
+      Enrollment: Newtract CRM > Programs > Senior Newcomers Program.
+    forms: [SNP-EN-001]
+    portal: "Newtract CRM > Programs > Senior Newcomers Program"
+
+  - id: pg-006
+    title: Housing Assistance Program (HAP)
+    tags: [housing, rent, apartment, shelter, HAP, homeless, housing search, BC Housing, rental]
+    content: |
+      The Housing Assistance Program (HAP) helps newcomers find and maintain stable housing.
+      Services:
+        - Rental market orientation (rights, leases, deposits under the Residential Tenancy Act)
+        - Assisted housing search and landlord introductions
+        - Emergency shelter referrals (BC Housing, Covenant House for youth)
+        - Rental supplement application assistance (BC Rental Assistance Program)
+        - Tenant–landlord dispute support and RTB hearing preparation
+        - Home safety assessments for families with young children
+      Eligibility: All eligible newcomers; priority given to GARs and PSRs in their first year.
+      Important: HAP does not provide direct financial assistance for rent — refer to BC Housing
+      for Emergency Rental Assistance (BC-ERA) or the Rental Assistance Program (RAP).
+      Average file duration: 6 weeks.
+      Funding: BC Housing Innovation Fund and ISSofBC General Fund (donations).
+      Program Coordinator: Kevin Mensah (ext. 252, kmensah@issofbc.org)
+      Enrollment: Newtract CRM > Programs > Housing Assistance Program.
+    forms: [HAP-EN-001, HAP-RA-001]
+    portal: "Newtract CRM > Programs > Housing Assistance Program | BC Housing: www.bchousing.org"

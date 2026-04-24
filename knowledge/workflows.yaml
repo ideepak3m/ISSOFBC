@@ -1,0 +1,221 @@
+category: Workflows & Procedures
+documents:
+
+  - id: wf-001
+    title: Workflow — New Client Intake (End to End)
+    tags: [workflow, intake process, new client, step by step, process, procedure, client onboarding]
+    content: |
+      Complete workflow for registering a new client from first contact to active service.
+
+      STEP 1 — First Contact (Day 0)
+        - Greet client at reception or take call/email inquiry.
+        - Confirm basic eligibility (immigration status, arrival date).
+        - If eligible: book intake appointment within 3 business days.
+        - If not eligible: provide CS-REF-001 community referral list.
+        - Log the initial contact in Newtract > Services > Log Service Delivery (type: Initial Contact).
+
+      STEP 2 — Prepare for Intake (Day 1–2)
+        - Reserve an intake room in Outlook calendar (rooms: Intake Room A or B).
+        - Book an interpreter if required (Newtract > Client Record > Book Interpreter — 48 hrs notice).
+        - Print intake package: CS-NA-001 (Needs Assessment), CS-CON-001 (Consent form).
+
+      STEP 3 — Intake Appointment (45–60 min)
+        - Verify identity with government-issued ID and immigration documents.
+        - Create Beneficiary record in Newtract > Client Intake > New Beneficiary.
+        - Complete Needs Assessment (CS-NA-001) — cover all 7 domains.
+        - Explain services and obtain signed Consent to Services (CS-CON-001).
+        - Assign primary settlement worker (default: yourself unless capacity exceeded).
+        - Book follow-up appointment.
+
+      STEP 4 — Post-Intake (within 5 business days)
+        - Create Initial Service Plan (CS-SP-001) in Newtract.
+        - Enrol client in appropriate programs (Newtract > Client Record > Programs).
+        - Make any urgent referrals (housing, health, legal) using CS-REF-002.
+        - Send welcome letter with contact card and program schedule.
+        - Update caseload tracker in SharePoint > [Your Team] > Caseload Tracker.
+
+      STEP 5 — Ongoing (30-day check-in)
+        - Review service plan with client at 30 days.
+        - Update Newtract outcomes if milestones achieved.
+        - Escalate any complex needs to supervisor.
+    forms: [CS-NA-001, CS-CON-001, CS-SP-001, CS-REF-001, CS-REF-002]
+    portal: "Newtract CRM > Client Intake | Intake rooms booked via Outlook"
+
+  - id: wf-002
+    title: Workflow — Job Placement Process
+    tags: [job placement, employment, placement, employer, hire, job, workflow, ERP process]
+    content: |
+      The job placement workflow applies to all clients in the Employment Readiness Program (ERP).
+
+      STEP 1 — Client Readiness Assessment
+        - Assess client's readiness using ERP Readiness Checklist (ERP-RC-001).
+        - Confirm updated resume, cover letter, and interview skills training completed.
+        - Identify target sector and job type with client.
+
+      STEP 2 — Employer Matching
+        - Search ISSofBC employer network (SharePoint > ERP > Employer Network Database).
+        - If no match: conduct targeted job search with client or contact WorkBC for employer referrals.
+        - Contact employer to confirm interest and arrange introduction.
+
+      STEP 3 — Job Application Support
+        - Customise resume and cover letter for the specific role.
+        - Submit application — either with client present or on their behalf with consent.
+        - Log application in Newtract > Client Record > Employment > Job Applications.
+
+      STEP 4 — Interview Preparation
+        - Book mock interview session in Newtract (type: Employment Coaching).
+        - Provide employer-specific research and interview tips.
+        - Confirm logistics (dress code, location, timing, transit route).
+
+      STEP 5 — Job Offer and Placement Confirmation
+        - Once offer received, review offer letter with client — explain benefits, hours, conditions.
+        - If client accepts: complete Job Placement Record in Newtract > Job Placements > New Placement.
+        - Notify Program Coordinator (pnair@issofbc.org) — counts toward KPI targets.
+        - Complete ERP Placement Notification (ERP-JP-001) for grant reporting.
+
+      STEP 6 — Post-Placement Follow-up
+        - Check in at 2 weeks, 1 month, 3 months, and 6 months post-placement.
+        - Log each follow-up in Newtract > Services > Log Service Delivery (type: Employment Follow-up).
+        - If client loses the job: re-activate ERP file and restart from Step 1.
+    forms: [ERP-RC-001, ERP-JP-001]
+    portal: "Newtract > Job Placements | SharePoint > ERP > Employer Network Database"
+
+  - id: wf-003
+    title: Workflow — Expense Claim Submission
+    tags: [expense workflow, submit expense, reimbursement process, claim process, receipts]
+    content: |
+      End-to-end process for claiming work-related expense reimbursement.
+
+      STEP 1 — Before Spending
+        - For any expense over $50: get email approval from your manager before spending.
+        - Keep original receipts (not credit card statements).
+
+      STEP 2 — Complete the Claim Form
+        - Download BC-EXP-001 from SharePoint > Finance > Forms.
+        - Fill in: date, vendor, amount, description, program code (see fin-002), GL code.
+        - For mileage: use BC-ML-001 form; record start/end address and km driven ($0.62/km).
+        - Attach scanned receipts (PDF or JPG, minimum 300 DPI).
+
+      STEP 3 — Manager Approval
+        - Email the completed form + receipts to your direct manager.
+        - Manager approves by replying "Approved" or signs the PDF form.
+        - Do NOT submit to Finance without manager approval.
+
+      STEP 4 — Submit to Finance
+        - Email approved form + receipts to finance@issofbc.org by the 5th of the following month.
+        - Subject line format: "Expense Claim — [Your Name] — [Month Year]"
+        - Finance acknowledges receipt within 2 business days.
+
+      STEP 5 — Reimbursement
+        - Approved expenses are reimbursed in the next bi-weekly payroll run.
+        - Reimbursement appears on your pay stub as "Expense Reimbursement."
+        - If not received within 3 weeks of submission, follow up with finance@issofbc.org.
+
+      Common rejections: missing receipt, amount mismatched, wrong program code, late submission.
+    forms: [BC-EXP-001, BC-ML-001]
+    portal: "SharePoint > Finance > Forms | Submit to: finance@issofbc.org"
+
+  - id: wf-004
+    title: Workflow — Quarterly Grant Reporting (IRCC / Federal)
+    tags: [grant reporting workflow, IRCC reporting, quarterly report, federal grant, GovConnect, statistics]
+    content: |
+      Process for submitting quarterly statistical and financial reports to IRCC.
+
+      STEP 1 — Data Pull (2 weeks before deadline)
+        - Request Newtract data extract from Data Coordinator (data@issofbc.org).
+        - Specify: program name, quarter dates, required fields (clients served, service hours, demographics).
+        - Allow 5 business days for the extract.
+
+      STEP 2 — Data Review and Validation
+        - Verify client counts against your active caseload records.
+        - Flag any anomalies (duplicate entries, missing demographics) back to the Data Coordinator.
+        - Obtain Finance's quarter-end expense actuals from Business Central (contact finance@issofbc.org).
+
+      STEP 3 — Prepare the Report
+        - Log into GovConnect Portal (govconnect.canada.ca) — credentials in LastPass Finance vault.
+        - Navigate to: My Grants > [Grant Agreement Number] > Reporting > Quarterly Report.
+        - Enter statistical data in the system — all fields are mandatory.
+        - Upload financial actuals as supporting documents (PDF from Business Central).
+
+      STEP 4 — Review and Submit
+        - Grants Manager (grants@issofbc.org) reviews the report before submission.
+        - Allow 2 business days for review.
+        - Grants Manager submits and downloads the submission confirmation.
+        - File confirmation in SharePoint > Finance > Grant Reports > [Year] > [Quarter].
+
+      STEP 5 — Post-Submission
+        - Send submission confirmation to Executive Director by email.
+        - Note any budget variances over 10% for discussion at next management meeting.
+        - Calendar the next quarter's deadline immediately.
+      Deadlines: Q1 (Jul 31), Q2 (Oct 31), Q3 (Jan 31), Q4 (Apr 30).
+    forms: [GR-QR-001]
+    portal: "GovConnect: govconnect.canada.ca | SharePoint > Finance > Grant Reports"
+
+  - id: wf-005
+    title: Workflow — New Staff Onboarding Checklist
+    tags: [onboarding workflow, new employee, first day, HR process, new hire checklist]
+    content: |
+      Manager's checklist for onboarding a new staff member at ISSofBC.
+
+      TWO WEEKS BEFORE START DATE
+        [ ] Send IT New Employee Request (IT-NE-001) to it@issofbc.org — include start date, role, and systems needed.
+        [ ] Create BambooHR profile (HR completes — send HR-NE-001 to hr@issofbc.org).
+        [ ] Set up payroll record: send completed TD1, direct deposit form to paywork@issofbc.org.
+        [ ] Assign buddy/mentor from the team.
+        [ ] Add to relevant Teams channels and SharePoint groups.
+        [ ] Book orientation meetings: HR (Day 1), IT (Day 1), Program Manager (Week 1).
+        [ ] Order business cards if applicable (submit BC-BC-001 to admin@issofbc.org).
+
+      DAY 1
+        [ ] Issue building access card at reception (new employee brings government ID).
+        [ ] IT setup: laptop, email account, MFA, VPN token, Newtract access.
+        [ ] Signed documents collected: Employment Agreement, Privacy Policy (HR-PP-001), Code of Conduct (HR-CC-001).
+        [ ] HR orientation: benefits enrolment (PBC-EN-001 due within 30 days), BambooHR walkthrough.
+        [ ] Office tour, fire exit locations, Health & Safety orientation (HR-HS-001).
+
+      WEEK 1
+        [ ] Newtract CRM training booked and completed (book via SharePoint > Training).
+        [ ] FOIPPA and client confidentiality training completed (HR-FOIP-001) — mandatory.
+        [ ] Probation goals set with manager and documented (HR-PG-001) in BambooHR.
+        [ ] Introduction to team at weekly team meeting.
+
+      WEEK 2
+        [ ] Shadow senior colleague in client-facing work.
+        [ ] Access confirmed for: Outlook, Teams, SharePoint, BambooHR, Newtract, relevant program folders.
+        [ ] 2-week check-in meeting with manager completed.
+
+      30-DAY MARK
+        [ ] Confirm benefits enrolment completed (deadline: 30 days from start).
+        [ ] Review probation goals and adjust if needed.
+    forms: [IT-NE-001, HR-PP-001, HR-CC-001, HR-HS-001, HR-FOIP-001, HR-PG-001, PBC-EN-001]
+    portal: "IT: it@issofbc.org | HR: hr@issofbc.org | SharePoint > HR > Onboarding"
+
+  - id: wf-006
+    title: Workflow — Interpreter Booking
+    tags: [interpreter, translation, language, interpretation, book interpreter, language support]
+    content: |
+      ISSofBC provides professional interpretation services for all client interactions.
+      Available languages: Punjabi, Arabic, Farsi, Dari, Somali, Tigrinya, Mandarin, Cantonese, Spanish,
+      Tagalog, Hindi, Urdu, Korean, Vietnamese, and others on request.
+
+      STEP 1 — Book in Advance (minimum 48 hours notice)
+        - Go to: Newtract > Client Record > Book Interpreter.
+        - Select: language needed, appointment date/time, duration, location (in-person or phone/video).
+        - If booking for a group session, note the number of participants.
+
+      STEP 2 — Confirmation
+        - Interpreter assignment confirmed by the Interpretation Coordinator (interpret@issofbc.org) within 4 hours.
+        - If no ISSofBC interpreter is available, an external agency (Pacific Interpreters, CISOC) is booked.
+        - For urgent/same-day needs: call interpret@issofbc.org directly (ext. 270) — not guaranteed.
+
+      STEP 3 — On the Day
+        - Greet the interpreter and provide a brief context overview (not client-identifiable details).
+        - For sensitive topics (domestic violence, mental health), request a gender-matched interpreter.
+        - Do NOT ask bilingual colleagues to interpret for client meetings — this is policy (HR-INT-001).
+
+      STEP 4 — After the Appointment
+        - Log the interpretation service in Newtract along with the client service record.
+        - If issues arose with the interpreter, report to interpret@issofbc.org within 24 hours.
+      Interpretation is a funded, ISSofBC-provided service — there is no charge to clients.
+    forms: []
+    portal: "Newtract > Client Record > Book Interpreter | interpret@issofbc.org | Ext. 270"

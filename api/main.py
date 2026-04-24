@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.reports import router as reports_router, REPORT_REGISTRY
 from api.adhoc import router as adhoc_router
+from api.chatbot import router as chatbot_router
 
 app = FastAPI(
     title="IISofBC Analytics API",
@@ -18,6 +19,7 @@ app.add_middleware(
 
 app.include_router(reports_router, prefix="/api/reports", tags=["Predefined Reports"])
 app.include_router(adhoc_router,  prefix="/api",          tags=["AI Query"])
+app.include_router(chatbot_router, prefix="/api",         tags=["Knowledge Assistant"])
 
 
 @app.get("/", tags=["Health"])
